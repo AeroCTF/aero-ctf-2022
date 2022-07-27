@@ -64,7 +64,7 @@ void execvpe() {
     forbidden();
 }
 
-void getpid() {
+void nice() {
     unsigned long long python_base = &syscall - 0x79319a + 0x1c5000;
 
     // io.BufferedReader

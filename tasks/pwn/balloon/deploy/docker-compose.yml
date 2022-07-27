@@ -1,0 +1,37 @@
+version: '2.4'
+
+volumes:
+    balloon-docker-certs-ca:
+    balloon-docker-certs-client:
+
+services:
+  docker:
+    image: docker:20.10-dind
+    privileged: true
+    restart: unless-stopped
+    environment:
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - balloon-docker-certs-ca:/certs/ca
+      - balloon-docker-certs-client:/certs/client
+    cpus: 2
+    mem_limit: 4G
+    pids_limit: 16384
+
+  service:
+    build: .
+    restart: unless-stopped
+    environment:
+      - DOCKER_HOST=tcp://docker:2376
+      - DOCKER_CERT_PATH=/certs/client
+      - DOCKER_TLS_VERIFY=1
+      - DOCKER_TLS_CERTDIR=/certs
+    volumes:
+      - balloon-docker-certs-client:/certs/client:ro
+    cpus: 2
+    mem_limit: 4G
+    pids_limit: 16384
+    ports:
+      - '34202:31337'
+    depends_on:
+      - docker

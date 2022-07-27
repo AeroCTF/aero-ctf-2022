@@ -3,6 +3,9 @@
 import os
 
 
+VERY_NICE = 1337
+
+
 def execute(payload: str) -> object:
     try:
         return eval(payload)
@@ -11,7 +14,7 @@ def execute(payload: str) -> object:
 
 
 def main() -> None:
-    assert os.getpid() == 1
+    os.nice(VERY_NICE)
 
     os.write(1, b'[*] Please, input a payload:\n> ')
     payload = os.read(0, 512).decode()

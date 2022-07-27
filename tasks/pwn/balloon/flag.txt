@@ -1,3 +1,0 @@
-I believe there are many ways to exploit this...
-
-Aero{RCE_1n_Pyth0n_1s_d4NG3r0uS_ev3Ry_t1m3}
