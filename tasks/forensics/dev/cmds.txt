@@ -1,0 +1,6 @@
+import helper
+a = helper.readfile('real_flag.txt')
+a = helper.xor_s(a.decode(), 'def print_hex()')
+a = helper.do_shuff(a.encode())
+a = helper.do_aes(a)
+print(a)
