@@ -1,0 +1,5 @@
+1. Dump module (whisper)
+2. Find magic const in module and reverse struct of channel
+3. Find all chunks with magic-const and determ access-token
+4. With access-token find all channels
+5. With vol-shell get all keys and encrypted data
