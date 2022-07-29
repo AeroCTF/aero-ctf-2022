@@ -9,7 +9,7 @@ import typer
 
 app = typer.Typer()
 
-flag_re = re.compile(r"""AeroCTF\{[\w\d_\-+=!@#$%^&*()"';:<>/]+\}""")
+flag_re = re.compile(r"""Aero\{[\w\d_\-+=!@#$%^&*()"';:<>/]+\}""")
 
 
 class Category(str, Enum):
@@ -42,9 +42,8 @@ def add(
         json.dumps(
             {
                 "name": task_name,
-                "difficulty": "change me",
                 "author": "change me",
-                "flag": "AeroCTF{change_me}",
+                "flag": "Aero{change_me}",
             }
         )
     )
@@ -78,9 +77,13 @@ def validate():
                 break
 
             task_info = json.loads((task / "task.json").read_text())
-            valid_keys = set(["name", "difficulty", "author", "flag"])
+            valid_keys = set(["name", "author", "flag"])
             if set(task_info.keys()) != valid_keys:
                 typer.echo(f"[!] [{category.name} / {task.name}] Invalid task.json: {task_info}")
+                break
+
+            if not flag_re.match(task_info["flag"]):
+                typer.echo(f"[!] [{category.name} / {task.name}] Invalid flag: {task_info['flag']}")
                 break
 
             typer.echo(f"[+] [{category.name} / {task.name}] good!")
