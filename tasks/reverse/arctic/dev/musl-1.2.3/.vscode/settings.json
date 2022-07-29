@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "stdio_impl.h": "c",
+        "pthread_impl.h": "c"
+    }
+}
