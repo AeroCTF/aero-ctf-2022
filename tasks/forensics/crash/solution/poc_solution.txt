@@ -1,0 +1,22 @@
+1. strings python.dmp > strings.txt
+    search to 'flag.txt' and find string "a = helper.readfile('real_flag.txt')"
+2. find all 'helper.' strings
+    - a = helper.xor_s(a.decode(), 'def print_hex()')
+    - a = helper.do_aes(a)
+    - a = helper.do_shuff(a.encode())
+    - a = helper.readfile('real_flag.txt')
+3. Building the correct use of methods
+    open, xor, shuffle, aes
+4. Find AES output (print(a))
+    b'.*'
+5. Find aes key with 'aeskeyfind'
+    d625fb17129b1983b52416dcf0243440, set iv=b'\x00'*16 to get last block
+    >>> ctx.decrypt(a)
+b'\xf7\xcd\xc4\xf4\xcf\xbcHsy\xc2\xf7\x9f\x8f\x03\xe2\x9dP\x1eY%\x04<V\x0b\x18W\x03\x17J\x1eLKWP\x14\x06\x0eB\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+
+6. With last block find original unecrypted text
+1F 00 0B 10 48 46 44 50 0B 00 3B 18 14 07 13 4F 50 1E 59 25 04 3C 56 0B 18 57 03 17 4A 1E 4C 4B 57 50 14 06 0E 42 00 00 00 00 00 00 00 00 00 00
+
+7. now we need to inverse shuffle
+	find the MT state with script "find_mt.py"
+	after that recover state and decrypt flag - recv_mt.py
