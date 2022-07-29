@@ -1,0 +1,13 @@
+version: '2.4'
+
+services:
+  service:
+    build: .
+    restart: unless-stopped
+    environment:
+      - FLAG=Aero{c0nGR4tz_y0U_h4ve_maD3_a_h4shq1une}
+    cpus: 1
+    mem_limit: 2G
+    pids_limit: 8192
+    ports:
+      - '12992:31337'
