@@ -13,7 +13,6 @@ nohup_pid=$!
 
 docker run \
     --rm \
-    --privileged \
     --interactive \
     --cpus 0.1 \
     --memory 64M \
