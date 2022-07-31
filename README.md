@@ -2,9 +2,9 @@
 
 Aero CTF 2022 was held on July 30, 2022. This repository contains source codes and solutions.
 
-Results, writeups, feedback and so on: ctftime.org/event/1659
+Results, writeups, feedback and so on: [ctftime.org/event/1659](https://ctftime.org/event/1659/)
 
-Infrastructure support by @Rubikoid, the scoring system is [yatb](https://github.com/kksctf/yatb).
+Infrastructure support by [Rubikoid](https://github.com/Rubikoid), the scoring system is [yatb](https://github.com/kksctf/yatb).
 
 ## Challenges
 
